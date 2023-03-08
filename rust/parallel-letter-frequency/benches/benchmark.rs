@@ -5,6 +5,18 @@ extern crate test;
 use std::collections::HashMap;
 use test::Bencher;
 
+// #[bench]
+// fn bench_tiny_parallel2(b: &mut Bencher) {
+//     let tiny = &["a"];
+//     b.iter(|| parallel_letter_frequency::frequency2(tiny, 3));
+// }
+
+// #[bench]
+// fn bench_tiny_parallel3(b: &mut Bencher) {
+//     let tiny = &["a"];
+//     b.iter(|| parallel_letter_frequency::frequency3(tiny, 3));
+// }
+
 #[bench]
 fn bench_tiny_parallel(b: &mut Bencher) {
     let tiny = &["a"];
@@ -16,6 +28,18 @@ fn bench_tiny_sequential(b: &mut Bencher) {
     let tiny = &["a"];
     b.iter(|| frequency(tiny));
 }
+
+// #[bench]
+// fn bench_small_parallel2(b: &mut Bencher) {
+//     let texts = all_texts(1);
+//     b.iter(|| parallel_letter_frequency::frequency2(&texts, 3));
+// }
+
+// #[bench]
+// fn bench_small_parallel3(b: &mut Bencher) {
+//     let texts = all_texts(1);
+//     b.iter(|| parallel_letter_frequency::frequency3(&texts, 3));
+// }
 
 #[bench]
 fn bench_small_parallel(b: &mut Bencher) {
@@ -29,6 +53,18 @@ fn bench_small_sequential(b: &mut Bencher) {
     b.iter(|| frequency(&texts));
 }
 
+// #[bench]
+// fn bench_large_parallel2(b: &mut Bencher) {
+//     let texts = all_texts(30);
+//     b.iter(|| parallel_letter_frequency::frequency2(&texts, 3));
+// }
+
+// #[bench]
+// fn bench_large_parallel3(b: &mut Bencher) {
+//     let texts = all_texts(30);
+//     b.iter(|| parallel_letter_frequency::frequency3(&texts, 3));
+// }
+
 #[bench]
 fn bench_large_parallel(b: &mut Bencher) {
     let texts = all_texts(30);
@@ -38,6 +74,30 @@ fn bench_large_parallel(b: &mut Bencher) {
 #[bench]
 fn bench_large_sequential(b: &mut Bencher) {
     let texts = all_texts(30);
+    b.iter(|| frequency(&texts));
+}
+
+// #[bench]
+// fn bench_very_large_parallel2(b: &mut Bencher) {
+//     let texts = all_texts(100);
+//     b.iter(|| parallel_letter_frequency::frequency2(&texts, 3));
+// }
+
+// #[bench]
+// fn bench_very_large_parallel3(b: &mut Bencher) {
+//     let texts = all_texts(100);
+//     b.iter(|| parallel_letter_frequency::frequency3(&texts, 3));
+// }
+
+#[bench]
+fn bench_very_large_parallel(b: &mut Bencher) {
+    let texts = all_texts(100);
+    b.iter(|| parallel_letter_frequency::frequency(&texts, 3));
+}
+
+#[bench]
+fn bench_very_large_sequential(b: &mut Bencher) {
+    let texts = all_texts(100);
     b.iter(|| frequency(&texts));
 }
 
