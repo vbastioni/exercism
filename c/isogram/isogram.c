@@ -8,7 +8,7 @@ bool is_isogram(const char phrase[]) {
         char c = phrase[i];
         if (c == ' ' || c == '-')
             continue;
-        c = c > 'A' ? (c - 'A') : (c - 'a');
+        c = c >= 'a' ? (c - 'a') : (c - 'A');
         if ((found & (1 << c)) != 0)
             return false;
         found |= (1 << c);
